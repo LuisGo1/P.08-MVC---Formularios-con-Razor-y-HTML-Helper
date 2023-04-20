@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-3">HELPERS</h1>
+
+</div>
+
+<div class="mb-3 row">
+    <label for="UserName" class="col-sm-2 col-form-label">Usuario</label>
+    <div class="col-sm-5">
+        @Html.TextBox("txt.UserName","",new {@class="form-control"})
+    </div>
+</div>
+<div class="mb-3 row">
+    <label for="Password" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-5">
+        @Html.TextBox("txt.Password","",new {@class="form-control"})
+    </div>
+</div>
+
+<label for="staticEmail" class="col-sm-2 col-form-label">Genero</label>
+
+<div class="form-check form-check-inline">
+    @Html.RadioButton("Genero", "Masculino", true, new{id="masculino"})
+    <label class="form-check-label" for="inlineRadio1">Masculino</label>
+</div>
+<div class="form-check form-check-inline">
+    @Html.RadioButton("Genero", "Femenino", false, new{id="femenino"})
+    <label class="form-check-label" for="inlineRadio2">Femenino</label>
+</div>
+<div class="form-group row">
+    <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+    <div class="col-sm-5">
+        @Html.TextArea("txtdireccion","",new{@class="form-control"})
+    </div>
+</div>
+<label for="staticEmail" class="col-sm-2 col-form-label">Pasatiempos</label>
+
+<div class="form-check form-check-inline">
+    @Html.CheckBox("Bailando")
+    <label class="form-check-label" for="inlineCheckbox1">Bailar</label>
+</div>
+<div class="form-check form-check-inline">
+    @Html.CheckBox("Correr")
+    <label class="form-check-label" for="inlineCheckbox2">Correr</label>
+</div>
+<div class="form-check form-check-inline">
+    @Html.CheckBox("Escalar")
+    <label class="form-check-label" for="inlineCheckbox3">Escalar</label>
+</div>
+<div class="form-check form-check-inline">
+    @Html.CheckBox("Peliculas")
+    <label class="form-check-label" for="inlineCheckbox3">Peliculas</label>
+</div>
+
+@{
+    IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+}
+<div class="form-group row">
+    <label for="Curso" class="col-sm-2 col-form-label">Curso</label>
+    <div class="col-sm-5">
+
+        @Html.DropDownList("ddlCurso", new SelectList(strList,
+        strList.FirstOrDefault()), "--Seleccionar curso ----" )
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="Conocimmiento" class="col-sm-2 col-form-label">Conocimiento</label>
+    <div class="col-sm-5">
+
+        @Html.ListBox("Seleccionar habilidades", new List<SelectListItem>{
+        new SelectListItem {Text = "C #", Value = "1"},
+        new SelectListItem {Text = "ASP.NET", Value = "2"},
+        new SelectListItem {Text = "ASP.NET Core", Value = "3"},
+        new SelectListItem {Text = "Azure", Value = "4"}
+        })
+
+        @using (Html.BeginForm("index", "inicio", FormMethod.Post))
+        {
+            <div>
+                <button type="button" class="btn btn-success col-sm-10 ">enviar</button>
+
+            </div>
+
+        }
